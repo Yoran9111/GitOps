@@ -1,6 +1,15 @@
 # VirtualBox Configuration with Btrfs Disk Setup
 
 { config, lib, pkgs, ... }: 
+
+{
+  imports = [
+    # Importing your custom flux configuration
+    ../roles/flux.nix
+  ];
+
+  # Ensure other configurations (e.g., networking, services) are set up here...
+}
 {
   imports = [
     ../Roles/Nginx.nix  # Include Nginx Config
