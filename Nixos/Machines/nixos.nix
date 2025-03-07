@@ -1,7 +1,11 @@
 # VirtualBox Configuration with Btrfs Disk Setup
 
 { config, lib, pkgs, ... }: 
-
+{
+  environment.systemPackages = with pkgs; [
+    flux
+  ];
+}
 {
   imports = [
     ../Roles/Nginx.nix  # Include Nginx Config
