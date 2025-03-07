@@ -4,11 +4,11 @@
 
 {
   imports = [
-    ../roles/Nginx.nix  # Include Nginx Config
-    ../roles/Network.nix  # Include Network Config
-    ../roles/jip.nix  # Include User Config
-    ../roles/apps.nix # Includes apps
-    ../roles/flux.nix
+    ../Roles/Nginx.nix  # Include Nginx Config
+    ../Roles/Network.nix  # Include Network Config
+    ../Roles/jip.nix  # Include User Config
+    ../Roles/apps.nix # Includes apps
+    ../Roles/flux.nix
  #   ../roles/
  #   ../roles/
   ];
