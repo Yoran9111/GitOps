@@ -1,23 +1,24 @@
 { config, lib, pkgs, ... }:
 
 {
+  # Import Flux configuration file from the custom path
   imports = [
-    # Import your flux configuration here
-    /home/jip/lib/nixos/Nixos/Roles/flux.nix
+    /home/jip/lib/nixos/Nixos/Roles/flux.nix  # Ensure this path is correct
   ];
 
-  # Now you can use the services.flux option because it's imported
+  # Enable Flux service
   services.flux = {
     enable = true;
-    branch = "main";
-    gitRepository = "https://github.com/Yoran9111/GitOps.git";
-    secretRef = null;
+    branch = "main";  # Specify the branch (default is "main")
+    gitRepository = "https://github.com/Yoran9111/GitOps.git";  # Repository URL
+    secretRef = null;  # Configure secret reference if needed
   };
 
-  # If you want to configure flux with a systemd service:
+  # Systemd service configuration for Flux
   systemd.services.flux = {
     description = "Flux GitOps Tool";
     wantedBy = [ "multi-user.target" ];
+
     serviceConfig.ExecStart = "${pkgs.flux}/bin/flux";
     serviceConfig.ExecReload = "${pkgs.flux}/bin/flux";
     serviceConfig.Restart = "always";
