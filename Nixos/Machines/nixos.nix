@@ -9,8 +9,8 @@
   ];
 
   # Ensure other configurations (e.g., networking, services) are set up here...
-}
-{
+
+
   imports = [
     ../Roles/Nginx.nix  # Include Nginx Config
     ../Roles/Network.nix  # Include Network Config
