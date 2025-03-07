@@ -14,6 +14,17 @@
     };
   };
 
+  # Flux systemd service
+  systemd.services.flux = {
+    description = "Flux GitOps Tool";
+    wantedBy = [ "multi-user.target" ];
+
+    serviceConfig.ExecStart = "${pkgs.flux}/bin/flux";
+    serviceConfig.ExecReload = "${pkgs.flux}/bin/flux";
+    serviceConfig.Restart = "always";
+  };
+
+  # Enable Flux service
   config = {
     services.flux = {
       enable = true;
@@ -22,4 +33,6 @@
       secretRef = null;
     };
   };
+
+  # Optionally, you can configure Flux for GitOps here if necessary
 }
