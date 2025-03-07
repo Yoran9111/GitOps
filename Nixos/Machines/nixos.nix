@@ -12,7 +12,13 @@
  #   ../roles/
  #   ../roles/
   ];
-
+  # Flux service configuration
+  services.flux = {
+    enable = true;
+    branch = "main";
+    gitRepository = "https://github.com/Yoran9111/GitOps.git";
+    secretRef = null;
+  };
   system.stateVersion = "24.11";
 
   networking.hostName = "nixos";
