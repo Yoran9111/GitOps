@@ -2,11 +2,6 @@
 
 { config, lib, pkgs, ... }: 
 {
-  environment.systemPackages = with pkgs; [
-    flux
-  ];
-}
-{
   imports = [
     ../Roles/Nginx.nix  # Include Nginx Config
     ../Roles/Network.nix  # Include Network Config
