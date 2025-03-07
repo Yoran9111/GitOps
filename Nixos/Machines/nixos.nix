@@ -1,5 +1,4 @@
 # VirtualBox Configuration with Btrfs Disk Setup
-
 { config, lib, pkgs, ... }: 
 
 {
@@ -8,17 +7,10 @@
     ../Roles/Network.nix  # Include Network Config
     ../Roles/jip.nix  # Include User Config
     ../Roles/apps.nix # Includes apps
-    ../Roles/flux.nix
- #   ../roles/
- #   ../roles/
+    ../Roles/flux.nix  # Import Flux configuration (no need to define services.flux again)
   ];
-  # Flux service configuration
-  services.flux = {
-    enable = true;
-    branch = "main";
-    gitRepository = "https://github.com/Yoran9111/GitOps.git";
-    secretRef = null;
-  };
+
+  # System Version
   system.stateVersion = "24.11";
 
   networking.hostName = "nixos";
