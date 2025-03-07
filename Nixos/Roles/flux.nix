@@ -1,11 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  # Import Flux configuration
-  imports = [
-    /home/jip/lib/nixos/Nixos/Roles/flux.nix
-  ];
-
   # Minimal Flux configuration
   services.flux = {
     enable = true;
