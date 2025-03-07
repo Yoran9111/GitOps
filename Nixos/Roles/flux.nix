@@ -1,6 +1,7 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }: 
 
 {
+  # Flux service configuration
   services.flux = {
     enable = true;
     branch = "main";
@@ -8,6 +9,7 @@
     secretRef = null;
   };
 
+  # Systemd service for Flux
   systemd.services.flux = {
     description = "Flux GitOps Tool";
     wantedBy = [ "multi-user.target" ];
