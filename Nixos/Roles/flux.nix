@@ -1,20 +1,20 @@
 { config, lib, pkgs, ... }:
 
 {
-  # Import Flux configuration file from the custom path
+  # Import Flux configuration
   imports = [
-    /home/jip/lib/nixos/Nixos/Roles/flux.nix  # Ensure this path is correct
+    /home/jip/lib/nixos/Nixos/Roles/flux.nix
   ];
 
-  # Enable Flux service
+  # Minimal Flux configuration
   services.flux = {
     enable = true;
     branch = "main";  # Specify the branch (default is "main")
-    gitRepository = "https://github.com/Yoran9111/GitOps.git";  # Repository URL
-    secretRef = null;  # Configure secret reference if needed
+    gitRepository = "https://github.com/Yoran9111/GitOps.git";  # Your GitOps repo
+    secretRef = null;  # Optional secret reference
   };
 
-  # Systemd service configuration for Flux
+  # Simplified systemd service for Flux
   systemd.services.flux = {
     description = "Flux GitOps Tool";
     wantedBy = [ "multi-user.target" ];
