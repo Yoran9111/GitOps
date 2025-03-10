@@ -12,7 +12,10 @@
     virtualHosts = {
       "mywebsite.com" = {
         root = "/nix/store/79dljmcihdrv2bcrgp1imms81akxh599-nginx-1.26.3/html";
-        listen = [ "8080" ];  # Here is the listen port set correctly
+        
+        # Correctly specify listen as a list of ports
+        listen = [ { address = "0.0.0.0"; port = 8080; } ];
+        
         locations = {
           "/" = {
             proxyPass = "http://192.168.254.134:30080/";
@@ -32,5 +35,5 @@
   services.openssh.enable = true;
 
   # Configure firewall to allow necessary ports (including 8080)
-  networking.firewall.allowedTCPPorts = [ 22 80 443 8079 8080 ];  # Allow traffic on port 8080
+  networking.firewall.allowedTCPPorts = [ 22 80 443 8080 ];  # Allow traffic on port 8080
 }
