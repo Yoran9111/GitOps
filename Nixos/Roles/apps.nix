@@ -8,7 +8,6 @@
     jdk11            # Java 11 (or you can use jdk17 or jdk21 if needed)
     curl             # Curl for making network requests
     gitlab-runner    # GitLab Runner for CI/CD pipelines
-    openssh-client   # SSH client (for secure communication)
     vim              # A text editor (if you prefer Vim)
     wget             # A tool for downloading files from the web
   ];
