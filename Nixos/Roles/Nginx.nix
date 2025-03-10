@@ -35,5 +35,5 @@
 
   services.openssh.enable = true;
 
-  networking.firewall.allowedTCPPorts = [ 22 80 443 8080 ];  # Allow traffic on port 8080
+  networking.firewall.allowedTCPPorts = [ 22 80 443 8079 8080 ];  # Allow traffic on port 8080
 }
