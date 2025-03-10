@@ -13,8 +13,8 @@
       "mywebsite.com" = {
         root = "/nix/store/79dljmcihdrv2bcrgp1imms81akxh599-nginx-1.26.3/html";
         
-        # Correctly specify listen as a list of ports
-        listen = [ { address = "0.0.0.0"; port = 8080; } ];
+        # Correct format for listen, just as a string with port
+        listen = [ "0.0.0.0:8080" ];
         
         locations = {
           "/" = {
@@ -31,9 +31,7 @@
     };
   };
 
-  # Enable OpenSSH for remote access
   services.openssh.enable = true;
 
-  # Configure firewall to allow necessary ports (including 8080)
   networking.firewall.allowedTCPPorts = [ 22 80 443 8080 ];  # Allow traffic on port 8080
 }
