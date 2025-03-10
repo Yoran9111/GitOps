@@ -14,7 +14,7 @@
         root = "/nix/store/79dljmcihdrv2bcrgp1imms81akxh599-nginx-1.26.3/html";
         listen = [
           { 
-            port = 443; 
+            port = 8080; 
             addr = "0.0.0.0"; 
           }
         ];
