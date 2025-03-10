@@ -13,9 +13,12 @@
       "mywebsite.com" = {
         root = "/nix/store/79dljmcihdrv2bcrgp1imms81akxh599-nginx-1.26.3/html";
         
-        # Correct structure for listen: a list of attributes
+        # Correct listen configuration
         listen = [
-          { address = "0.0.0.0"; port = 8080; }
+          {
+            address = "0.0.0.0";
+            port = 8080;
+          }
         ];
         
         locations = {
