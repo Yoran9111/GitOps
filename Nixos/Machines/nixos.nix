@@ -7,7 +7,7 @@
     ../Roles/Network.nix  # Include Network Config
     ../Roles/jip.nix  # Include User Config
     ../Roles/apps.nix # Includes apps
-    ../Roles/Jenkins.nix  # Import Flux configuration (no need to define services.flux again)
+    ../Roles/Gitlab.nix  # Import Flux configuration (no need to define services.flux again)
   ];
 
   # System Version
