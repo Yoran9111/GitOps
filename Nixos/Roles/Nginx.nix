@@ -9,6 +9,7 @@
 
   services.nginx = {
     enable = true;
+    listen 8080;
     virtualHosts = {
       "mywebsite.com" = {
         root = "/nix/store/79dljmcihdrv2bcrgp1imms81akxh599-nginx-1.26.3/html";
