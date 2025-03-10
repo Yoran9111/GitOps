@@ -4,5 +4,7 @@
   environment.systemPackages = with pkgs; [
     fluxcd
     git
+    jdk11
+    curl
   ];
 }
