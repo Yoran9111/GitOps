@@ -15,7 +15,9 @@
         listen = [
           { 
             port = 443; 
-            addr = "0.0.0.0";
+            addr = "0.0.0.0"; 
+          }
+        ];
         locations = {
           "/" = {
             proxyPass = "http://192.168.254.134:30080/";
