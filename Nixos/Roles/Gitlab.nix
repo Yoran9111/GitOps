@@ -1,21 +1,23 @@
-{ config, pkgs, ... }: 
+{ config, pkgs, ... }:
 
 {
-  # Enable and configure GitLab Runner service
-  services.gitlabRunner = {
-    enable = true;                    # Enable GitLab Runner service
-    token = "<your-gitlab-runner-token>";  # Replace with your GitLab Runner registration token
-    executor = "shell";               # Set the executor type (shell is simplest)
-    runners = [
-      {
-        name = "nixos-runner";         # A meaningful name for your runner
-        url = "https://gitlab.com/";   # GitLab instance URL
-        token = "<your-gitlab-token>";  # Replace with your GitLab registration token
-        description = "GitLab Runner for NixOS";  # Description for your runner
-        tags = [ "nixos" ];            # Tags to help identify the runner
-        run_untagged = true;           # Allow the runner to run without tags
-        locked = false;                # The runner is not locked to specific projects
-      }
-    ];
+  environment.systemPackages = with pkgs; [
+    gitlab-runner  # Install GitLab Runner
+  ];
+
+  # GitLab Runner configuration
+  systemd.services.gitlab-runner = {
+    description = "GitLab Runner";
+    after = [ "network.target" ];
+    serviceConfig.ExecStart = "${pkgs.gitlab-runner}/bin/gitlab-runner run";
+    serviceConfig.User = "gitlab-runner";
+    serviceConfig.Group = "gitlab-runner";
+    serviceConfig.Restart = "always";
+  };
+
+  # Create the gitlab-runner user and group
+  users.users.gitlab-runner = {
+    isSystemUser = true;
+    shell = pkgs.zsh;  # Set to the shell you want for the user
   };
 }
