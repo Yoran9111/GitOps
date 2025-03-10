@@ -1,12 +1,17 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [
-    gitlab-runner
-    # Add other packages here
-  ];
+  # Create the gitlab-runner group
+  users.groups.gitlab-runner = {};
 
-  # Define GitLab Runner service as a systemd service
+  # Create the gitlab-runner user
+  users.users.gitlab-runner = {
+    isSystemUser = true;    # This ensures that no home directory is created for this user
+    shell = pkgs.bashInteractive;  # Assign a shell to the user
+    group = "gitlab-runner";  # Link the user to the group created above
+  };
+
+  # Optionally, you can configure GitLab Runner as a service
   systemd.services.gitlab-runner = {
     description = "GitLab Runner";
     wantedBy = [ "multi-user.target" ];
@@ -17,9 +22,5 @@
     serviceConfig.ExecStop = "${pkgs.gitlab-runner}/bin/gitlab-runner stop";
   };
 
-  # Ensure GitLab Runner runs as a specific user (optional)
-  users.users.gitlab-runner = {
-    isSystemUser = true;
-    shell = pkgs.bashInteractive;
-  };
+  # Include any other configuration specific to your setup
 }
