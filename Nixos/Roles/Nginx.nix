@@ -21,11 +21,12 @@
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-          '';
+            '';
+          };
         };
       };
     };
-  };
+  }
   services.openssh.enable = true;
   networking.firewall.allowedTCPPorts = [ 22 80 443 8080 8079 ];
 }
